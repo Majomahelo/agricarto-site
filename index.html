@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgriCarto — vos parcelles sur la carte</title>
+<meta name="description" content="AgriCarto : application Android de cartographie des parcelles agricoles. Cadastre, PAC, mesures, sélection par IA et GPS, coordonnées, cartes hors ligne.">
+<!-- Refus de l'utilisation de ce contenu pour l'entraînement d'IA (voir aussi robots.txt et ai.txt) -->
+<meta name="robots" content="index, follow, noai, noimageai">
+<meta property="og:title" content="AgriCarto — vos parcelles sur la carte">
+<meta property="og:description" content="Cadastre, PAC, mesures, IA et GPS : vos parcelles agricoles, même sans réseau.">
+<meta property="og:image" content="img/partage.jpg">
+<meta name="theme-color" content="#0E6251">
+<link rel="icon" href="img/logo.jpg">
+<style>
+  :root { --vert: #0E6251; --vert2: #13806a; --fond: #f5f8f6; --texte: #1c1f1c; --gris: #5f665f; --ligne: #dfe6e1; }
+  @media (prefers-color-scheme: dark) { :root { --fond: #151917; --texte: #e9eee9; --gris: #a7aea6; --ligne: #2c332e; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--texte); background: var(--fond); line-height: 1.55; }
+  a { color: var(--vert2); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  header { background: linear-gradient(125deg, var(--vert) 0%, var(--vert2) 60%, #1d9e7f 100%); color: #fff; padding: 56px 0 64px; }
+  header .wrap { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  header img { width: 128px; height: 128px; border-radius: 30px; box-shadow: 0 10px 28px rgba(0,0,0,.3); }
+  header h1 { margin: 0; font-size: clamp(36px, 7vw, 56px); letter-spacing: -1px; }
+  header p { margin: 6px 0 18px; font-size: 20px; opacity: .95; max-width: 560px; }
+  .badge { display: inline-block; background: #fff; color: var(--vert); font-weight: 700; border-radius: 24px; padding: 10px 18px; text-decoration: none; margin: 4px 8px 4px 0; }
+  .badge.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.7); }
+  section { padding: 48px 0 8px; }
+  h2 { font-size: 28px; margin: 0 0 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .card { background: var(--fond); border: 1px solid var(--ligne); border-radius: 18px; padding: 18px 20px; }
+  @media (prefers-color-scheme: light) { .card { background: #fff; } }
+  .card h3 { margin: 0 0 6px; font-size: 17px; color: var(--vert2); }
+  .card p { margin: 0; color: var(--gris); font-size: 15px; }
+  .shots { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 12px; scroll-snap-type: x mandatory; }
+  .shots figure { margin: 0; flex: 0 0 220px; scroll-snap-align: start; }
+  .shots img { width: 220px; border-radius: 22px; border: 6px solid #10221d; display: block; }
+  .shots figcaption { text-align: center; font-size: 14px; color: var(--gris); margin-top: 8px; }
+  .privacy { background: var(--vert); color: #fff; border-radius: 22px; padding: 28px; margin-top: 8px; }
+  .privacy h2 { margin-top: 0; }
+  .privacy a { color: #fff; }
+  .actions a { margin-right: 10px; }
+  footer { padding: 40px 0 50px; color: var(--gris); font-size: 14px; }
+  footer .mark { font-size: 11px; opacity: .55; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="img/logo.jpg" alt="Logo AgriCarto" width="128" height="128">
+    <div>
+      <h1>AgriCarto</h1>
+      <p>Vos parcelles agricoles sur la carte, au bureau comme au champ, même sans réseau.</p>
+      <span class="badge">Bientôt sur Google Play</span>
+      <a class="badge ghost" data-issue="idee.yml" href="#">Proposer une idée</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>Ce que fait AgriCarto</h2>
+    <div class="grid">
+      <div class="card"><h3>Toutes vos parcelles</h3><p>Rangées par groupes, avec étiquettes, couleurs, surfaces et périmètres. Recherche et tri en un geste.</p></div>
+      <div class="card"><h3>Cadastre, PAC et forêt</h3><p>Affichez les contours officiels et créez une parcelle en touchant les parcelles cadastrales ou déclarées.</p></div>
+      <div class="card"><h3>Détection automatique</h3><p>Touchez l'intérieur d'un champ sur la photo aérienne : le contour est proposé, à ajuster si besoin.</p></div>
+      <div class="card"><h3>Tour de parcelle au GPS</h3><p>Faites le tour du champ, téléphone en poche : la trace devient le contour de la parcelle.</p></div>
+      <div class="card"><h3>Coordonnées et référence cadastrale</h3><p>Lambert 93, WGS84, UTM… et la référence cadastrale du point, utiles pour une déclaration de dégâts ou un sinistre.</p></div>
+      <div class="card"><h3>Cartes hors ligne</h3><p>Téléchargez à l'avance les fonds de carte autour de vos parcelles, d'un département ou de toute la France.</p></div>
+      <div class="card"><h3>Captures à partager</h3><p>Une carte propre de vos parcelles ou d'un groupe, avec titre, surfaces et légende, prête à envoyer.</p></div>
+      <div class="card"><h3>Sauvegardes et synchronisation</h3><p>Sauvegardes automatiques sur le téléphone et synchronisation entre vos appareils via votre propre espace Drive.</p></div>
+      <div class="card"><h3>Pensée pour le terrain</h3><p>Mode plein soleil, grands boutons, loupe de précision, confirmations avant toute suppression.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Aperçu</h2>
+    <div class="shots">
+      <figure><img src="img/01-carte.jpg" alt="Carte des parcelles" loading="lazy" width="220" height="440"><figcaption>Vos parcelles et leurs surfaces</figcaption></figure>
+      <figure><img src="img/03-selection-cadastrale.jpg" alt="Sélection cadastrale" loading="lazy" width="220" height="440"><figcaption>Sélection depuis le cadastre</figcaption></figure>
+      <figure><img src="img/04-selection-ia.jpg" alt="Détection automatique du contour" loading="lazy" width="220" height="440"><figcaption>Contour détecté sur la photo</figcaption></figure>
+      <figure><img src="img/05-coordonnees.jpg" alt="Coordonnées en Lambert 93" loading="lazy" width="220" height="440"><figcaption>Coordonnées et cadastre</figcaption></figure>
+      <figure><img src="img/07-capture.jpg" alt="Capture d'un groupe" loading="lazy" width="220" height="440"><figcaption>Capture à partager</figcaption></figure>
+      <figure><img src="img/08-cartes-hors-ligne.jpg" alt="Cartes hors ligne" loading="lazy" width="220" height="440"><figcaption>Cartes hors ligne</figcaption></figure>
+    </div>
+    <p style="color:var(--gris);font-size:14px">Captures réalisées avec des données de démonstration. Fonds de carte © IGN.</p>
+  </section>
+
+  <section>
+    <div class="privacy">
+      <h2>Vos données restent chez vous</h2>
+      <p>Pas de compte, pas de publicité, pas de traceur. Vos parcelles sont enregistrées sur votre téléphone ; elles ne sont copiées ailleurs que si vous le décidez (export, synchronisation vers votre propre Drive). La détection automatique fonctionne sur l'appareil, sans envoyer d'image.</p>
+      <p><a href="confidentialite.html">Lire la politique de confidentialité</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Un problème, une idée ?</h2>
+    <p class="actions">
+      <a data-issue="bug.yml" href="#">Signaler un problème</a>
+      <a data-issue="idee.yml" href="#">Proposer une amélioration</a>
+    </p>
+    <p style="color:var(--gris);font-size:15px">Un compte GitHub (gratuit) est nécessaire pour écrire un message. Merci d'indiquer la version de l'appli (menu ⋮ › À propos) et votre modèle de téléphone.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Jacques Houdaille — AgriCarto. Tous droits réservés. Le code source de l'application n'est pas public ; toute reproduction de l'application, de ce site ou de ses visuels est interdite sans autorisation écrite.</p>
+    <p>Fonds de carte et données : © IGN (Licence Ouverte Etalab 2.0). L'application utilise des composants libres, dont la liste et les licences figurent dans l'appli (menu ⋮ › À propos › Licences).</p>
+    <p><a href="confidentialite.html">Confidentialité</a></p>
+    <!-- Empreinte de ce site (permet de reconnaître une copie) -->
+    <p class="mark">Réf. AGC-7Q4M-2026-JH</p>
+  </div>
+</footer>
+<script>
+  // Dépôt public qui reçoit les signalements
+  const REPO = 'Majomahelo/agricarto-site';
+  document.querySelectorAll('[data-issue]').forEach(a => { a.href = 'https://github.com/' + REPO + '/issues/new?template=' + a.dataset.issue; a.target = '_blank'; a.rel = 'noopener'; });
+</script>
+</body>
+</html>

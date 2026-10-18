@@ -1,0 +1,24 @@
+name: Proposer une amélioration
+description: Une idée pour rendre AgriCarto plus utile
+title: "[Idée] "
+labels: ["idée"]
+body:
+  - type: textarea
+    id: besoin
+    attributes:
+      label: Quel est votre besoin ?
+      description: Expliquez la situation (au champ, au bureau, pour une déclaration…) et ce qui vous manque.
+    validations:
+      required: true
+  - type: textarea
+    id: idee
+    attributes:
+      label: Comment l'imaginez-vous ?
+  - type: dropdown
+    id: importance
+    attributes:
+      label: Importance pour vous
+      options:
+        - Indispensable
+        - Utile
+        - Ce serait un plus

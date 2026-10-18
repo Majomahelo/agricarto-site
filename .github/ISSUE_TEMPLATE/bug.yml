@@ -1,0 +1,38 @@
+name: Signaler un problème
+description: Quelque chose ne fonctionne pas comme prévu dans AgriCarto
+title: "[Problème] "
+labels: ["problème"]
+body:
+  - type: markdown
+    attributes:
+      value: Merci de prendre le temps de signaler ce problème. Ne mettez pas d'informations personnelles (noms de clients, adresses précises).
+  - type: textarea
+    id: quoi
+    attributes:
+      label: Que s'est-il passé ?
+      description: Décrivez ce que vous avez fait, ce que vous attendiez et ce qui s'est produit.
+    validations:
+      required: true
+  - type: textarea
+    id: etapes
+    attributes:
+      label: Comment reproduire le problème ?
+      placeholder: "1. J'ouvre…\n2. Je touche…\n3. …"
+  - type: input
+    id: version
+    attributes:
+      label: Version d'AgriCarto
+      description: Menu ⋮ › À propos
+      placeholder: "0.16.0"
+    validations:
+      required: true
+  - type: input
+    id: telephone
+    attributes:
+      label: Modèle de téléphone et version d'Android
+      placeholder: "Samsung Galaxy A54, Android 14"
+  - type: textarea
+    id: captures
+    attributes:
+      label: Captures d'écran (facultatif)
+      description: Glissez une ou plusieurs images ici.

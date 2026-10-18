@@ -1,0 +1,8 @@
+# AgriCarto — © 2026 Jacques Houdaille. Tous droits réservés.
+# Le contenu de ce site (textes, captures, logo) ne doit pas être utilisé pour entraîner des modèles d'IA
+# ni pour reproduire l'application.
+User-Agent: *
+Disallow: /
+Disallow: *.jpg
+Disallow: *.png
+Disallow: *.html
